@@ -1,0 +1,361 @@
+@font-face {
+    font-family: 'klavika';
+    src: url('../assets/font/klavika-regular-webfont.woff');
+}
+
+body {
+    margin: 0;
+    font-family: 'klavika';
+    color: white;
+    background: #191919;
+    overflow: hidden;
+}
+
+.container {
+    overflow: hidden;
+}
+
+/* 
+
+    "LOAD SCREEN" STYLING
+
+*/
+
+.monk {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 106px;
+    height: 149px;
+    margin-top: -74.5px; /* Half the height */
+    margin-left: -53px; /* Half the width */
+    animation-name: zoom-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes floating-monk {
+    0% { transform: translateY(0%) }
+    50% { transform: translateY(7.5%) }
+    100% { transform: translateY(0%) }
+}
+
+#load-screen {
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s;
+    animation-name: fade-transparent;
+    animation-duration: 1s;
+    animation-delay: 3s;
+}
+
+@keyframes fade-transparent {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.monk-movement {
+    width: 100%;
+    height: 100%;
+    animation-name: floating-monk;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes zoom-in {
+    0% { 
+        width: 0px;
+        height: 0px;
+        margin: 0
+    }
+    100% { 
+        width: 106px;
+        height: 149px;
+    }
+}
+
+.text-under-monk {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    text-align: center;
+}
+
+.patience-text,.young-padawan-text {
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.patience-text {
+    animation: showup 7s;
+}
+
+.young-padawan-text {
+    width: 0px;
+    animation: reveal 7s;
+}
+
+.young-padawan-text span {
+    margin-left:-355px;
+    animation: slidein 7s;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:auto;}
+    80% {opacity:1;}
+    100% {opacity:0;width:auto;}
+}
+
+/* 
+
+    SLIDE SCREEN STYLING
+
+*/
+
+#background {
+    height: 100%;
+    transition: transform 1s;
+}
+
+.mm-logo {
+    position: absolute;
+    height: 10vh;
+    bottom: 2%;
+    right: 2%;
+}
+
+#slide-screen {
+    opacity: 0;
+    display: none;
+    transition: opacity 1s;
+}
+
+.slide-content {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+#forward-button,
+#backward-button {
+    all: unset;
+    position: absolute;
+    font-size: 12vh;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: 0;
+    color: white
+}
+
+#forward-button:hover,
+#backward-button:hover{
+    cursor: pointer;
+    -webkit-user-select: none;    
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: rgb(209, 209, 209)
+}
+
+#forward-button {
+    right: 1%;
+}
+
+#backward-button {
+    left: 1%;
+    display: none;
+}
+
+#big-text {
+    font-size: 6vh;
+    text-decoration: underline;
+    width: 50vh;
+    margin: 3vh;
+    position: absolute;
+    transition: opacity 1s;
+}
+
+.bt1, .bt2, .bt6, .bt7, .bt8 {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 5%;
+}
+
+.bt3, .bt4, .bt5 {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 5%;
+    text-align: right;
+}
+
+.bt9 {
+    top: 0%;
+    right: 0%;
+    text-align: right;
+}
+
+#tiny-text {
+    opacity: 1;
+    position: absolute;
+    font-size: 2vh;
+    width: 65vh;
+    margin: 2%;
+    transition: opacity 1s;
+}
+
+.tt0 {
+    bottom: 9%;
+}
+
+.tt1, .tt2, .tt3, .tt4, .tt5, .tt6, .tt7, .tt8 {
+    bottom: 0%;
+    left: 21%;
+}
+
+.tt9 {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 1%;
+    text-align: right;
+}
+
+#slide-stage-displayer {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    position: absolute;
+    bottom: 4%;
+    left: 2%;
+    width: 45vh;
+    font-size: 2vh;
+}
+
+.ssd-inner-box {
+    border-style: dotted;
+    text-align: center;
+    padding: 0.5% 3%;
+    border-width: 1px;
+    border-color: white;
+}
+
+.ssd-inner-box:hover {
+    cursor: pointer;
+}
+
+#final-info {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: right;
+    transition: opacity 1s;
+    width: 40%;
+}
+
+#final-info p {
+    margin: 0;
+}
+
+.contact {
+    margin-top: 5%; 
+}
+
+.contact p {
+    display: inline;
+    margin: 0% 0% 0% 2% !important;
+}
+
+a {
+    color: white
+}
+
+/* 
+
+    Media queries
+
+*/
+
+@media (max-width: 1300px) { 
+    .tt1, .tt2, .tt3, .tt4, .tt5, .tt6, .tt7, .tt8 {
+        bottom: 8%;
+        left: 1%;
+    }
+ }
+
+ @media (max-width: 800px) { 
+    .bt0, .bt1, .bt2, .bt3, .bt4, .bt5, .bt6, .bt7, .bt8 {
+        right: unset;
+        left: unset;
+        text-align: center;
+    }
+    #big-text {
+        width: auto;
+        width: 75%;
+        margin: 0% 12.5%;
+    }
+}
+
+/* 
+
+    Fog effect, closest I could get, didn't like it tho.
+
+*/
+
+/*#fog {
+    opacity: 0.2;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#fog:before, #fog:after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 300%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat-x;
+}
+
+#fog:before {
+    background-image: url('https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-1.png');
+    animation: drift 60s linear 0s infinite;
+}
+
+#fog:after {
+    background-image: url('https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-2.png');
+    animation: drift 25s linear 0s infinite;
+}
+
+@keyframes drift {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-200vw, 0, 0); }
+}*/
